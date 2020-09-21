@@ -2,9 +2,10 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+
 import * as cors from 'cors';
 
-const indexRouter = require('./routes/index');
+import indexRouter from './routes';
 
 const app = express();
 
@@ -30,5 +31,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 
 const port = process.env.PORT || 8080;
+
 
 app.listen(port, () => console.log(`Server listening on port ${port}`));

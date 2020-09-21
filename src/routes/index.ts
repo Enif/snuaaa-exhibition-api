@@ -1,9 +1,8 @@
-var express = require('express');
-var router = express.Router();
+import * as express from 'express';
+import photoRouter from './photoRouter';
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+const router = express.Router();
 
-module.exports = router;
+router.use('/photos', photoRouter);
+
+export default router;
