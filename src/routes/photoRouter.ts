@@ -6,11 +6,12 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     PhotoController.retrievePhotos()
-    .then((photos) => {
-        res.json({
-            data: photos
-        })    
-    })
+        .then((photos) => {
+            res.json(photos)
+        })
+        .catch((err) => {
+            console.error(err)
+        })
 })
 
 export default router;

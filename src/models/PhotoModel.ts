@@ -17,6 +17,12 @@ PhotoModel.init({
     title: {
         type: DataTypes.STRING
     },
+    location: {
+        type: DataTypes.STRING
+    },
+    date: {
+        type: DataTypes.DATE
+    },
     equipment: {
         type: DataTypes.STRING
     },
@@ -36,6 +42,9 @@ PhotoModel.init({
         type: DataTypes.FLOAT
     },
     yPos: {
+        type: DataTypes.FLOAT
+    },
+    zPos: {
         type: DataTypes.FLOAT
     },
     rotation: {
