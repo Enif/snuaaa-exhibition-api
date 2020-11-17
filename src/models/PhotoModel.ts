@@ -33,7 +33,7 @@ PhotoModel.init({
         type: DataTypes.STRING
     },
     story: {
-        type: DataTypes.STRING
+        type: DataTypes.TEXT
     },
     file_path: {
         type: DataTypes.STRING

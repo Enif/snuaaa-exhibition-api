@@ -1,4 +1,4 @@
-import { PhotoModel, UserModel } from '../models'
+import { UserModel } from '../models'
 import axios from 'axios';
 import * as jwt from 'jsonwebtoken';
 

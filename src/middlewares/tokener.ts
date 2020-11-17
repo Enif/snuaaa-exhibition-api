@@ -2,10 +2,12 @@ import * as jwt from 'jsonwebtoken';
 
 const JWT_EXPIRE = '1d';
 
-const verifyTokenMiddleware = function(req, res, next) {
+const verifyTokenMiddleware = function (req, res, next) {
 
     console.log(`[${req.method}] ${req.baseUrl + req.url}`);
-    const [type, token] = req.headers.authorization.split(" ");
+    const [type, token] = req.headers.authorization
+        ? req.headers.authorization.split(" ")
+        : [undefined, undefined]
 
     if (type !== 'Bearer') {
         return res.status(403).json({
@@ -37,7 +39,7 @@ const createToken = payload => {
 
     const jwtOption = {
         expiresIn: JWT_EXPIRE
-     };
+    };
 
     return new Promise((resolve, reject) => {
         jwt.sign(payload, process.env.JWT_SECRET, jwtOption, (error, token) => {

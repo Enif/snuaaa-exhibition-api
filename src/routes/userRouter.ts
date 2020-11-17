@@ -1,19 +1,22 @@
 import * as express from 'express';
 import AuthController from '../controllers/AuthController';
-import { createToken } from '../middlewares/tokener'
+import { createToken, verifyTokenMiddleware } from '../middlewares/tokener'
+import UserController from '../controllers/UserController';
 // import PhotoController from '../controllers/PhotoController';
 
 const router = express.Router();
 
 
-router.post('/google', (req, res) => {
-    AuthController.authGoogle(req.body)
-        .then(user => createToken({
-            user_id: user.get('user_id'),
-            nickname: user.get('nickname')
-        }))
-        .then((token) => {
-            res.json(token)
+interface nReq extends express.Request {
+    decodedToken: {
+        user_id: number
+    };
+}
+
+router.patch('/', verifyTokenMiddleware, (req: nReq, res) => {
+    UserController.updateUser(req.decodedToken.user_id, req.body)
+        .then((user) => {
+            res.json(user)
         })
         .catch((err) => {
             console.error(err)
