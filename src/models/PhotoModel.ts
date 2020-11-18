@@ -38,6 +38,9 @@ PhotoModel.init({
     file_path: {
         type: DataTypes.STRING
     },
+    thumbnail_path: {
+        type: DataTypes.STRING
+    },
     xPos: {
         type: DataTypes.FLOAT
     },
@@ -49,6 +52,10 @@ PhotoModel.init({
     },
     rotation: {
         type: DataTypes.FLOAT
+    },
+    voted_num: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
     }
 }, {
     sequelize,

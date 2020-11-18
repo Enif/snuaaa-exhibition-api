@@ -11,6 +11,20 @@ const PhotoController = {
                     reject(err)
                 })
         })
+    },
+
+    increaseVoteNum: function (photo_id: number) {
+        return new Promise((resolve, reject) => {
+            PhotoModel.increment('voted_num', {
+                where: { photo_id: photo_id }
+            })
+                .then(() => {
+                    resolve({ code: 200 })
+                })
+                .catch((err) => {
+                    reject(err)
+                })
+        })
     }
 }
 

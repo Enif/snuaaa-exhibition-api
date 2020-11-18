@@ -1,10 +1,27 @@
 import { UserModel } from '../models'
 
 const UserController = {
-    updateUser: function (user_id, data) {
+
+    retrieveUser: function (user_id: number) {
+        return new Promise<UserModel>((resolve, reject) => {
+            UserModel.findOne({
+                where: {
+                    user_id: user_id
+                }
+            })
+                .then((user) => {
+                    resolve(user);
+                })
+                .catch((err) => {
+                    reject(err);
+                })
+        })
+    },
+
+    updateUserNickname: function (user_id: number, nickname: string) {
         return new Promise((resolve, reject) => {
             UserModel.update({
-                nickname: data.nickname
+                nickname: nickname
             }, {
                 where: {
                     user_id: user_id
@@ -18,7 +35,26 @@ const UserController = {
                     reject(err)
                 })
         })
+    },
+
+    updateUserDidVoted: function (user_id: number) {
+        return new Promise((resolve, reject) => {
+            UserModel.update({
+                didVoted: true
+            }, {
+                where: {
+                    user_id: user_id
+                }
+            })
+                .then(() => {
+                    resolve()
+                })
+                .catch((err) => {
+                    reject(err)
+                })
+        })
     }
+
 }
 
 export default UserController;

@@ -22,6 +22,10 @@ UserModel.init({
     },
     login_at: {
         type: DataTypes.DATE
+    },
+    didVoted: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     }
 
 }, {
