@@ -53,9 +53,15 @@ PhotoModel.init({
     rotation: {
         type: DataTypes.FLOAT
     },
+    can_be_voted: {
+        type: DataTypes.BOOLEAN,
+    },
     voted_num: {
         type: DataTypes.INTEGER,
         defaultValue: 0
+    },
+    is_video: {
+        type: DataTypes.BOOLEAN,
     }
 }, {
     sequelize,

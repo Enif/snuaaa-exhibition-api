@@ -3,7 +3,10 @@ import { PhotoModel } from '../models'
 const PhotoController = {
     retrievePhotos: function () {
         return new Promise((resolve, reject) => {
-            PhotoModel.findAll()
+            PhotoModel.findAll({
+                attributes: { exclude: ['voted_num'] },
+                order: [['photo_id', 'ASC']]
+            })
                 .then((photos) => {
                     resolve(photos)
                 })

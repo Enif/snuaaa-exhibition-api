@@ -24,7 +24,8 @@ const GuestBookController = {
                         as: 'author',
                         required: true
                     }],
-                    order: [['created_at', 'DESC']]
+                    order: [['created_at', 'DESC']],
+                    limit: 20
                 }
             )
                 .then((guestBooks) => {
