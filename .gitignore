@@ -62,3 +62,6 @@ typings/
 
 # uploaded contents
 upload/
+
+# build result
+dist/

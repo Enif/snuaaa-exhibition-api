@@ -7,7 +7,7 @@ const GuestBookController = {
                 author_id: author_id,
                 text: text
             })
-                .then(() => resolve())
+                .then(() => resolve({}))
                 .catch((err) => {
                     reject(err)
                 })

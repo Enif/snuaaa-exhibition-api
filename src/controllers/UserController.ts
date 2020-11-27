@@ -47,7 +47,7 @@ const UserController = {
                 }
             })
                 .then(() => {
-                    resolve()
+                    resolve({})
                 })
                 .catch((err) => {
                     reject(err)
