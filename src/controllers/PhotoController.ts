@@ -1,34 +1,20 @@
-import { PhotoModel } from '../models'
+import { PhotoModel } from '../models';
 
 const PhotoController = {
-    retrievePhotos: function () {
-        return new Promise((resolve, reject) => {
-            PhotoModel.findAll({
-                attributes: { exclude: ['voted_num'] },
-                order: [['photo_id', 'ASC']]
-            })
-                .then((photos) => {
-                    resolve(photos)
-                })
-                .catch((err) => {
-                    reject(err)
-                })
+  retrievePhotos() {
+    return new Promise((resolve, reject) => {
+      PhotoModel.findAll({
+        attributes: { exclude: ['voted_num'] },
+        order: [['photo_id', 'ASC']],
+      })
+        .then((photos) => {
+          resolve(photos);
         })
-    },
-
-    increaseVoteNum: function (photo_id: number) {
-        return new Promise((resolve, reject) => {
-            PhotoModel.increment('voted_num', {
-                where: { photo_id: photo_id }
-            })
-                .then(() => {
-                    resolve({ code: 200 })
-                })
-                .catch((err) => {
-                    reject(err)
-                })
-        })
-    }
-}
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  },
+};
 
 export default PhotoController;

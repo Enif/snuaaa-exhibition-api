@@ -11,21 +11,6 @@ interface nReq extends express.Request {
     };
 }
 
-router.patch('/', verifyTokenMiddleware, (req: nReq, res) => {
-    UserController.updateUserNickname(req.decodedToken.user_id, req.body.nickname)
-        .then((user) => {
-            res.json(user)
-        })
-        .catch((err) => {
-            console.error(err)
-            res.status(500)
-                .json({
-                    error: 'internal server error',
-                    code: 0
-                })
-        })
-})
-
 router.get('/voted', verifyTokenMiddleware, (req: nReq, res) => {
     UserController.retrieveUser(req.decodedToken.user_id)
         .then((user) => {

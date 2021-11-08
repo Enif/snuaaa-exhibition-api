@@ -1,6 +1,7 @@
 import * as express from 'express';
 import PhotoController from '../controllers/PhotoController';
 import UserController from '../controllers/UserController';
+import VoteController from '../controllers/VoteController';
 import { verifyTokenMiddleware } from '../middlewares/tokener';
 
 const router = express.Router();
@@ -33,7 +34,7 @@ router.post('/vote', verifyTokenMiddleware, (req: AuthorizedReq, res) => {
         return res.status(401).send();
       }
       UserController.updateUserHasVoted(req.decodedToken.user_id)
-        .then(() => PhotoController.increaseVoteNum(req.body.photo_id))
+        .then(() => VoteController.create(req.body.photo_id, user.get('isMember') as boolean))
         .then(() => {
           res.json({
             result: 'success',
