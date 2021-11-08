@@ -37,10 +37,10 @@ const UserController = {
         })
     },
 
-    updateUserDidVoted: function (user_id: number) {
+    updateUserHasVoted: function (user_id: number) {
         return new Promise((resolve, reject) => {
             UserModel.update({
-                didVoted: true
+                hasVoted: true
             }, {
                 where: {
                     user_id: user_id

@@ -91,7 +91,7 @@ router.get('/info', verifyTokenMiddleware, (req: NewReq, res) => {
       if (user) {
         return res.json({
           isMember: user.get('isMember'),
-          hasVoted: user.get('didVoted'),
+          hasVoted: user.get('hasVoted'),
         });
       }
       return res.status(403).json({

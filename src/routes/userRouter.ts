@@ -1,8 +1,6 @@
 import * as express from 'express';
-import AuthController from '../controllers/AuthController';
-import { createToken, verifyTokenMiddleware } from '../middlewares/tokener'
+import { verifyTokenMiddleware } from '../middlewares/tokener';
 import UserController from '../controllers/UserController';
-// import PhotoController from '../controllers/PhotoController';
 
 const router = express.Router();
 
@@ -31,7 +29,7 @@ router.patch('/', verifyTokenMiddleware, (req: nReq, res) => {
 router.get('/voted', verifyTokenMiddleware, (req: nReq, res) => {
     UserController.retrieveUser(req.decodedToken.user_id)
         .then((user) => {
-            res.json({ didVoted: user.get('didVoted') })
+            res.json({ hasVoted: user.get('hasVoted') })
         })
         .catch((err) => {
             console.error(err)
