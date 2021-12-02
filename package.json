@@ -5,6 +5,7 @@
   "scripts": {
     "start": "nodemon",
     "start:prev": "node ./bin/www",
+    "build": "tsc",
     "lint": "eslint",
     "lint:fix": "eslint --fix"
   },
