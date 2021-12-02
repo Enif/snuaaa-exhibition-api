@@ -3,7 +3,7 @@ import UserModel from './UserModel';
 import GuestBookModel from './GuestBookModel';
 
 export {
-    PhotoModel,
-    UserModel,
-    GuestBookModel
-}
+  PhotoModel,
+  UserModel,
+  GuestBookModel,
+};

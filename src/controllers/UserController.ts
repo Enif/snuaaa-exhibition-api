@@ -18,6 +18,24 @@ const UserController = {
     });
   },
 
+  updateNickname(user_id: number, nickname: string) {
+    return new Promise<void>((resolve, reject) => {
+      UserModel.update({
+        nickname,
+      }, {
+        where: {
+          user_id,
+        },
+      })
+        .then(() => {
+          resolve();
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  },
+
   updateUserHasVoted(user_id: number) {
     return new Promise<UserModel>((resolve, reject) => {
       UserModel.update({
